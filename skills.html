@@ -4,29 +4,161 @@
   <meta charset="UTF-8">
   <title>Competências | José Pedro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* RESET */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0b0f19, #111827);
+      color: #e5e7eb;
+      line-height:1.6;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display:flex;
+      justify-content:center;
+      padding:40px 20px;
+      background: rgba(11,15,25,0.95);
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      padding: 22px 64px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-size:1.2rem;
+      font-weight:500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover { background:#1d4ed8; transform:translateY(-2px); }
+
+    /* SECTION */
+    .section {
+      max-width:900px;
+      margin:80px auto;
+      padding:0 20px;
+      text-align:center;
+    }
+
+    .section h2 {
+      margin-bottom:32px;
+      font-size:1.8rem;
+      color:#60a5fa;
+    }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display:flex;
+      justify-content:center;
+      align-items:flex-end;
+      gap:40px;
+      height:250px; /* altura total da barra + label */
+      margin-top:50px;
+    }
+
+    .skill {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .skill-bar {
+      width:40px;
+      background:#1e293b;
+      border-radius:12px 12px 0 0;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .skill-level {
+      background:#2563eb;
+      width:100%;
+      border-radius:12px 12px 0 0;
+      transition: height 0.5s ease;
+    }
+
+    .skill-label {
+      margin-top:10px;
+      font-size:1rem;
+      text-align:center;
+    }
+
+    footer {
+      text-align:center;
+      padding:60px 20px;
+      opacity:0.45;
+      margin-top:auto;
+    }
+
+  </style>
 </head>
 <body>
 
 <header class="navbar">
-  <span class="logo">José Pedro</span>
+  <a href="index.html" class="btn-primary">Início</a>
 </header>
 
 <section class="section">
   <h2>Competências</h2>
 
-  <ul class="skills">
-    <li>Unity Engine</li>
-    <li>C#</li>
-    <li>Game Design</li>
-    <li>Programação Orientada a Objetos</li>
-    <li>Controle de versões (Git)</li>
-  </ul>
+  <div class="skills-grid">
+    <div class="skill">
+      <div class="skill-bar" style="height:150px;">
+        <div class="skill-level" style="height:9/10*100%;"></div>
+      </div>
+      <div class="skill-label">Unity</div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-bar" style="height:150px;">
+        <div class="skill-level" style="height:8/10*100%;"></div>
+      </div>
+      <div class="skill-label">C#</div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-bar" style="height:150px;">
+        <div class="skill-level" style="height:6/10*100%;"></div>
+      </div>
+      <div class="skill-label">Blender</div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-bar" style="height:150px;">
+        <div class="skill-level" style="height:7/10*100%;"></div>
+      </div>
+      <div class="skill-label">Photoshop</div>
+    </div>
+  </div>
 </section>
 
 <footer>
   <p>© 2025 • José Pedro Rodrigues</p>
 </footer>
+
+<script>
+  // Converter altura relativa para porcentagem
+  document.querySelectorAll('.skill-level').forEach(bar => {
+    let h = bar.style.height;
+    if(h.includes('/10')){
+      let parts = h.split('/');
+      let val = parseFloat(parts[0]);
+      let max = parseFloat(parts[1]);
+      bar.style.height = (val/max*100)+'%';
+    }
+  });
+</script>
 
 </body>
 </html>
