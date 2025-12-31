@@ -19,7 +19,7 @@
 
     /* HERO */
     .hero{
-      min-height:100vh;
+      min-height:80vh;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -40,10 +40,10 @@
       margin-bottom:32px;
     }
 
-    /* BOTÕES MAIS JUNTOS */
+    /* BOTÕES MAIS JUNTOS - REDUZIDO DE 20px PARA 12px */
     .hero-buttons{
       display:flex;
-      gap:20px; /* antes era 40 */
+      gap:12px;
       flex-wrap:wrap;
       justify-content:center;
     }
@@ -51,10 +51,10 @@
     .hero-buttons a{
       background:#2563eb;
       color:white;
-      padding:20px 52px;
+      padding:16px 36px;
       border-radius:999px;
       text-decoration:none;
-      font-size:1.15rem;
+      font-size:1.1rem;
       transition:0.3s;
     }
 
@@ -66,7 +66,7 @@
     /* SECTIONS */
     .section{
       max-width:900px;
-      margin:120px auto;
+      margin:60px auto;
       padding:0 20px;
       text-align:center;
     }
@@ -76,44 +76,57 @@
       margin-bottom:24px;
     }
 
-    /* CONTACT */
-    .contact{
-      margin-top:200px;
-      text-align:center;
-    }
-
-    .contact-email{
-      margin-bottom:20px;
-      opacity:0.85;
-    }
-
-    .contact-buttons{
-      display:flex;
-      gap:20px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-
-    .contact-buttons a{
-      background:#1e293b;
-      padding:16px 32px;
-      border-radius:999px;
-      color:#e5e7eb;
-      text-decoration:none;
-      transition:0.3s;
-    }
-
-    .contact-buttons a:hover{
-      background:#2563eb;
-    }
-
-    /* RODAPÉ MAIS ESCURO */
+    /* RODAPÉ MAIS ESCURO E COM INFORMAÇÕES DE CONTATO */
     footer{
       margin-top:auto;
       background:#020617;
       text-align:center;
-      padding:50px 20px;
-      opacity:0.7;
+      padding:40px 20px;
+    }
+
+    .contact-info{
+      margin-bottom:30px;
+    }
+
+    .contact-info h2{
+      color:#60a5fa;
+      margin-bottom:20px;
+      font-size:1.5rem;
+    }
+
+    .contact-email{
+      margin-bottom:20px;
+      font-size:1.1rem;
+      opacity:0.85;
+    }
+
+    .contact-links{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:30px;
+    }
+
+    .contact-links a{
+      background:#1e293b;
+      padding:12px 28px;
+      border-radius:999px;
+      color:#e5e7eb;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:1rem;
+    }
+
+    .contact-links a:hover{
+      background:#2563eb;
+    }
+
+    .copyright{
+      opacity:0.5;
+      font-size:0.9rem;
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,0.1);
     }
   </style>
 </head>
@@ -142,22 +155,21 @@
   </p>
 </section>
 
-<section class="contact">
-  <h2>Contato</h2>
-
-  <div class="contact-email">
-    Email: jose_rodrigues@eticalgarve.com
-  </div>
-
-  <div class="contact-buttons">
-    <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
-    <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
-    <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">LinkedIn</a>
-  </div>
-</section>
-
 <footer>
-  © 2025 • José Pedro Rodrigues
+  <div class="contact-info">
+    <h2>Contato</h2>
+    <div class="contact-email">
+      Email: jose_rodrigues@eticalgarve.com
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
+      <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
+      <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2025 • José Pedro Rodrigues
+  </div>
 </footer>
 
 </body>
