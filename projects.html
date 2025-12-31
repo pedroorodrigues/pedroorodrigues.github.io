@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Projetos | José Pedro</title>
+  <title>Projetos | José Pedro Rodrigues</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -52,7 +52,7 @@
       background:#1e293b;
       padding:36px;
       border-radius:14px;
-      margin:32px auto;
+      margin:0 auto;
       max-width:700px;
       text-align:left;
       cursor:pointer;
@@ -89,32 +89,16 @@
       background:#020617;
       padding:40px;
       border-radius:16px;
-      max-width:500px;
       width:90%;
+      max-width:420px;
       text-align:center;
       position:relative;
     }
 
     .modal-content h3{
-      margin-bottom:12px;
-      font-size:1.6rem;
+      margin-bottom:24px;
+      font-size:1.5rem;
     }
-
-    .modal-content p{
-      opacity:0.8;
-      margin-bottom:28px;
-    }
-
-    .close{
-      position:absolute;
-      top:16px;
-      right:20px;
-      font-size:1.6rem;
-      cursor:pointer;
-      opacity:0.7;
-    }
-
-    .close:hover{opacity:1;}
 
     .modal-buttons{
       display:flex;
@@ -129,9 +113,9 @@
       border-radius:999px;
       font-size:1rem;
       font-weight:500;
+      border:none;
       cursor:pointer;
       text-decoration:none;
-      border:none;
       transition:0.3s;
     }
 
@@ -157,9 +141,9 @@
     footer{
       margin-top:auto;
       background:#020617;
-      text-align:center;
       padding:50px 20px;
-      opacity:0.7;
+      text-align:center;
+      opacity:0.6;
     }
   </style>
 </head>
@@ -174,24 +158,20 @@
   <!-- QUANTUM GAME -->
   <div class="project-card"
        data-title="Quantum Game"
-       data-desc="Jogo publicado na itch.io com foco em puzzles e mecânicas lógicas."
        data-link="https://joelfernandes.itch.io/the-quantum-game">
     <h3>Quantum Game</h3>
     <p>Jogo publicado na itch.io com foco em puzzles e mecânicas lógicas.</p>
   </div>
-
 </section>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
     <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
 
     <div class="modal-buttons">
       <button id="copyBtn">Copiar ligação</button>
-      <a id="visitBtn" target="_blank">Ir para o site</a>
+      <a id="openBtn" target="_blank">Abrir direto</a>
     </div>
   </div>
 </div>
@@ -201,32 +181,28 @@
 </footer>
 
 <script>
-  const cards = document.querySelectorAll('.project-card');
+  const card = document.querySelector('.project-card');
   const modal = document.getElementById('modal');
-  const title = document.getElementById('modalTitle');
-  const desc = document.getElementById('modalDesc');
+  const modalTitle = document.getElementById('modalTitle');
   const copyBtn = document.getElementById('copyBtn');
-  const visitBtn = document.getElementById('visitBtn');
-  const closeBtn = document.querySelector('.close');
+  const openBtn = document.getElementById('openBtn');
 
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      title.textContent = card.dataset.title;
-      desc.textContent = card.dataset.desc;
-      visitBtn.href = card.dataset.link;
-      copyBtn.dataset.link = card.dataset.link;
-      modal.style.display = "flex";
-    });
+  card.addEventListener('click', () => {
+    modalTitle.textContent = card.dataset.title;
+    copyBtn.dataset.link = card.dataset.link;
+    openBtn.href = card.dataset.link;
+    modal.style.display = 'flex';
   });
 
-  closeBtn.onclick = () => modal.style.display = "none";
-  window.onclick = e => { if(e.target === modal) modal.style.display = "none"; };
+  modal.addEventListener('click', e => {
+    if(e.target === modal) modal.style.display = 'none';
+  });
 
-  copyBtn.onclick = () => {
+  copyBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(copyBtn.dataset.link);
-    copyBtn.textContent = "Ligação copiada!";
-    setTimeout(() => copyBtn.textContent = "Copiar ligação", 1500);
-  };
+    copyBtn.textContent = 'Ligação copiada!';
+    setTimeout(() => copyBtn.textContent = 'Copiar ligação', 1500);
+  });
 </script>
 
 </body>
