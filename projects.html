@@ -2,314 +2,100 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>José Pedro Rodrigues | Desenvolvedor de Jogos</title>
+  <title>Projetos | José Pedro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --dark-bg: #0b0f19;
+      --card-bg: #1e293b;
+      --text: #e5e7eb;
+      --accent: #60a5fa;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #10b981;
-      --dark-bg: #0b0f19;
-      --darker-bg: #020617;
-      --card-bg: #1e293b;
-      --text: #e5e7eb;
-      --text-light: #94a3b8;
-      --accent: #60a5fa;
-      --gradient: linear-gradient(135deg, #0b0f19, #111827);
-    }
-
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--gradient);
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0b0f19, #111827);
       color: var(--text);
-      line-height: 1.6;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    /* NAVEGAÇÃO FIXA */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
+    /* HEADER */
+    .page-header {
       background: rgba(11, 15, 25, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 20px;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo i {
-      color: var(--secondary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-      padding: 8px 16px;
-      border-radius: 20px;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent);
-      background: rgba(96, 165, 250, 0.1);
-    }
-
-    /* HERO SECTION */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 40px 20px;
       text-align: center;
-      padding: 120px 20px 60px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-      top: 20%;
-      left: 10%;
-      z-index: 0;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-      bottom: 20%;
-      right: 10%;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg, var(--accent), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      color: var(--accent);
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 40px;
-      max-width: 650px;
-    }
-
-    /* BOTÕES HERO */
-    .hero-buttons {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 30px;
-    }
-
-    .btn {
+    .back-btn {
+      background: var(--primary);
+      color: white;
       padding: 16px 40px;
       border-radius: 50px;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      cursor: pointer;
-      border: none;
     }
 
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-primary:hover {
+    .back-btn:hover {
       background: var(--primary-dark);
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      transform: translateY(-3px);
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      border: 2px solid var(--text-light);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-5px);
-    }
-
-    /* SEÇÃO SOBRE */
-    .section {
-      padding: 100px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
+    /* TÍTULO DA PÁGINA */
+    .page-title {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 60px;
+      margin: 60px 20px 40px;
       color: var(--accent);
+      font-size: 2.5rem;
       position: relative;
     }
 
-    .section-title::after {
+    .page-title::after {
       content: '';
       position: absolute;
-      width: 80px;
-      height: 4px;
-      background: var(--secondary);
+      width: 100px;
+      height: 3px;
+      background: #10b981;
       bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 2px;
     }
 
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-image {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s;
-    }
-
-    .about-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .about-text h3 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--accent);
-    }
-
-    .about-text p {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-      color: var(--text-light);
-    }
-
-    /* HABILIDADES EM DESTAQUE */
-    .skills-highlight {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .skill-item {
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 15px;
-      text-align: center;
-      min-width: 150px;
-      transition: transform 0.3s;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .skill-item:hover {
-      transform: translateY(-10px);
-      background: linear-gradient(145deg, var(--card-bg), #2d3748);
-    }
-
-    .skill-item i {
-      font-size: 2.5rem;
-      color: var(--secondary);
-      margin-bottom: 15px;
-    }
-
-    .skill-item h4 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    /* PROJETOS DESTAQUE */
-    .projects-grid {
+    /* PROJETOS GRID */
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
-      margin-top: 50px;
     }
 
     .project-card {
       background: var(--card-bg);
       border-radius: 20px;
       overflow: hidden;
-      transition: all 0.3s;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
     }
 
     .project-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 
     .project-image {
@@ -325,7 +111,7 @@
     }
 
     .project-card:hover .project-image img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .project-content {
@@ -333,14 +119,15 @@
     }
 
     .project-content h3 {
+      color: var(--accent);
       font-size: 1.5rem;
       margin-bottom: 10px;
-      color: var(--accent);
     }
 
     .project-content p {
-      color: var(--text-light);
+      color: #94a3b8;
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .project-tags {
@@ -358,590 +145,325 @@
       font-size: 0.9rem;
     }
 
-    /* TIMELINE FORMAÇÃO */
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 50px auto 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--accent);
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      margin-bottom: 50px;
-      position: relative;
-      width: 50%;
-      padding: 0 40px;
-    }
-
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-
-    .timeline-content {
-      background: var(--card-bg);
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      width: 20px;
-      height: 20px;
-      background: var(--secondary);
-      border-radius: 50%;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content::before {
-      right: -50px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content::before {
-      left: -50px;
-    }
-
-    .timeline-content h3 {
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .timeline-content .date {
-      color: var(--secondary);
+      text-decoration: none;
       font-weight: 600;
-      margin-bottom: 10px;
-      display: block;
+      transition: gap 0.3s;
     }
 
-    /* CONTATO */
-    .contact-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 50px;
-      margin-top: 50px;
+    .project-link:hover {
+      gap: 12px;
     }
 
-    .contact-info {
-      background: var(--card-bg);
+    /* MODAL MELHORADO */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.98);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #1a1f2e;
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(96, 165, 250, 0.1);
     }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .modal-content h3 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      color: #94a3b8;
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
-    .contact-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(96, 165, 250, 0.1);
-      border-radius: 50%;
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: color 0.3s;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      border-radius: 50%;
+    }
+
+    .close:hover {
       color: var(--accent);
+      background: rgba(96, 165, 250, 0.1);
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .modal-btn {
+      flex: 1;
+      min-width: 150px;
+      padding: 14px 24px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.3s;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .modal-btn.copy {
+      background: rgba(96, 165, 250, 0.1);
+      color: var(--accent);
+    }
+
+    .modal-btn.copy:hover {
+      background: rgba(96, 165, 250, 0.2);
+    }
+
+    .modal-btn.visit {
+      background: var(--primary);
+      color: white;
+    }
+
+    .modal-btn.visit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
     /* FOOTER */
     footer {
-      background: var(--darker-bg);
-      padding: 60px 20px 30px;
-      margin-top: 100px;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-    }
-
-    .footer-column h3 {
-      color: var(--accent);
-      margin-bottom: 20px;
-      font-size: 1.3rem;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      color: var(--text-light);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .social-links a {
-      width: 45px;
-      height: 45px;
-      background: var(--card-bg);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .social-links a:hover {
-      background: var(--primary);
-      transform: translateY(-5px);
-    }
-
-    .copyright {
+      background: #020617;
       text-align: center;
-      padding-top: 40px;
-      margin-top: 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-light);
+      padding: 50px 20px;
+    }
+
+    .footer-info {
+      opacity: 0.7;
       font-size: 0.9rem;
     }
 
-    /* RESPONSIVIDADE */
-    @media (max-width: 992px) {
-      .about-content {
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .projects-container {
         grid-template-columns: 1fr;
       }
       
-      .timeline::before {
-        left: 30px;
-      }
-      
-      .timeline-item {
-        width: 100%;
-        left: 0 !important;
-        padding-left: 80px;
-        padding-right: 0;
-      }
-      
-      .timeline-content::before {
-        left: 30px !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .navbar {
+      .modal-buttons {
         flex-direction: column;
-        gap: 20px;
       }
       
-      .nav-links {
+      .modal-btn {
         width: 100%;
-        justify-content: center;
       }
-      
-      .section {
-        padding: 60px 20px;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-    }
-
-    /* ANIMAÇÕES */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      animation: fadeInUp 0.8s ease forwards;
     }
   </style>
 </head>
 
 <body>
-  <!-- NAVEGAÇÃO -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fas fa-gamepad"></i>
-      José Pedro
-    </div>
-    <div class="nav-links">
-      <a href="#home" class="active">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#formacao">Formação</a>
-      <a href="#contato">Contato</a>
-    </div>
-  </nav>
+  <header class="page-header">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Voltar ao Início
+    </a>
+  </header>
 
-  <!-- HERO SECTION -->
-  <section id="home" class="hero">
-    <div class="hero-content fade-in">
-      <h1>Desenvolvedor de Jogos</h1>
-      <div class="hero-subtitle">Unity Developer & Game Designer</div>
-      <p>
-        Estudante na ETIC Algarve focado em criar experiências interativas
-        imersivas e mecânicas de gameplay inovadoras. Apaixonado por transformar
-        ideias em jogos envolventes.
-      </p>
-      <div class="hero-buttons">
-        <a href="#projetos" class="btn btn-primary">
-          <i class="fas fa-gamepad"></i> Ver Projetos
-        </a>
-        <a href="#contato" class="btn btn-secondary">
-          <i class="fas fa-envelope"></i> Entrar em Contato
+  <h1 class="page-title">Meus Projetos</h1>
+
+  <div class="projects-container">
+    <!-- QUANTUM GAME -->
+    <div class="project-card" data-modal="quantum">
+      <div class="project-image">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Quantum Game">
+      </div>
+      <div class="project-content">
+        <h3>Quantum Game</h3>
+        <div class="project-tags">
+          <span>Unity</span>
+          <span>C#</span>
+          <span>Puzzle</span>
+          <span>itch.io</span>
+        </div>
+        <p>Jogo de puzzles com mecânicas quânticas inovadoras, publicado na itch.io.</p>
+        <a href="https://joelfernandes.itch.io/the-quantum-game" target="_blank" class="project-link">
+          Ver Projeto <i class="fas fa-arrow-right"></i>
         </a>
       </div>
     </div>
-  </section>
 
-  <!-- SOBRE MIM -->
-  <section id="sobre" class="section">
-    <h2 class="section-title">Sobre Mim</h2>
-    <div class="about-content">
-      <div class="about-image fade-in">
-        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Desenvolvimento de Jogos">
+    <!-- SPACE ADVENTURE -->
+    <div class="project-card" data-modal="space">
+      <div class="project-image">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Space Adventure">
       </div>
-      <div class="about-text fade-in">
-        <h3>Desenvolvedor apaixonado por jogos</h3>
-        <p>
-          Sou estudante de programação na ETIC Algarve, com foco especializado em
-          desenvolvimento de jogos. Minha paixão por jogos começou cedo e evoluiu
-          para o desejo de criar minhas próprias experiências interativas.
-        </p>
-        <p>
-          Tenho experiência prática com Unity, C#, e ferramentas de design 3D como
-          Blender. Meu objetivo é criar jogos que não apenas divirtam, mas também
-          contem histórias e proporcionem experiências memoráveis aos jogadores.
-        </p>
-        <p>
-          Além do desenvolvimento técnico, tenho interesse em design de jogos,
-          balanceamento de mecânicas e criação de narrativas interativas.
-        </p>
+      <div class="project-content">
+        <h3>Space Adventure</h3>
+        <div class="project-tags">
+          <span>Unity 3D</span>
+          <span>C#</span>
+          <span>Aventura</span>
+          <span>RPG</span>
+        </div>
+        <p>Jogo 3D de exploração espacial com combate e elementos de RPG.</p>
+        <a href="projects.html" class="project-link">
+          Em Desenvolvimento <i class="fas fa-code"></i>
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- HABILIDADES DESTAQUE -->
-  <section id="habilidades" class="section">
-    <h2 class="section-title">Habilidades Técnicas</h2>
-    <div class="skills-highlight">
-      <div class="skill-item fade-in">
-        <i class="fab fa-unity"></i>
-        <h4>Unity</h4>
-        <p>Avançado</p>
+    <!-- PIXEL PLATFORMER -->
+    <div class="project-card" data-modal="pixel">
+      <div class="project-image">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pixel Platformer">
       </div>
-      <div class="skill-item fade-in">
-        <i class="fas fa-code"></i>
-        <h4>C#</h4>
-        <p>Avançado</p>
-      </div>
-      <div class="skill-item fade-in">
-        <i class="fas fa-cube"></i>
-        <h4>Blender</h4>
-        <p>Intermediário</p>
-      </div>
-      <div class="skill-item fade-in">
-        <i class="fas fa-paint-brush"></i>
-        <h4>Photoshop</h4>
-        <p>Intermediário</p>
-      </div>
-      <div class="skill-item fade-in">
-        <i class="fas fa-database"></i>
-        <h4>SQL</h4>
-        <p>Básico</p>
-      </div>
-      <div class="skill-item fade-in">
-        <i class="fab fa-git-alt"></i>
-        <h4>Git</h4>
-        <p>Intermediário</p>
+      <div class="project-content">
+        <h3>Pixel Platformer</h3>
+        <div class="project-tags">
+          <span>Unity 2D</span>
+          <span>Pixel Art</span>
+          <span>Plataforma</span>
+          <span>C#</span>
+        </div>
+        <p>Jogo 2D em pixel art com mecânicas de plataforma e colecionáveis.</p>
+        <a href="projects.html" class="project-link">
+          Em Desenvolvimento <i class="fas fa-code"></i>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- PROJETOS DESTAQUE -->
-  <section id="projetos" class="section">
-    <h2 class="section-title">Projetos em Destaque</h2>
-    <div class="projects-grid">
-      <div class="project-card fade-in">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Quantum Game">
-        </div>
-        <div class="project-content">
-          <h3>Quantum Game</h3>
-          <div class="project-tags">
-            <span>Unity</span>
-            <span>C#</span>
-            <span>Puzzle</span>
-          </div>
-          <p>Jogo de puzzles com mecânicas quânticas inovadoras, publicado na itch.io.</p>
-          <a href="projects.html" class="btn btn-primary">Ver Detalhes</a>
-        </div>
-      </div>
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
       
-      <div class="project-card fade-in">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Space Adventure">
-        </div>
-        <div class="project-content">
-          <h3>Space Adventure</h3>
-          <div class="project-tags">
-            <span>Unity</span>
-            <span>3D</span>
-            <span>Aventura</span>
-          </div>
-          <p>Jogo 3D de exploração espacial com combate e elementos de RPG.</p>
-          <a href="projects.html" class="btn btn-primary">Ver Detalhes</a>
-        </div>
-      </div>
-      
-      <div class="project-card fade-in">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pixel Platformer">
-        </div>
-        <div class="project-content">
-          <h3>Pixel Platformer</h3>
-          <div class="project-tags">
-            <span>2D</span>
-            <span>Pixel Art</span>
-            <span>Plataforma</span>
-          </div>
-          <p>Jogo 2D em pixel art com mecânicas de plataforma e colecionáveis.</p>
-          <a href="projects.html" class="btn btn-primary">Ver Detalhes</a>
-        </div>
+      <div class="modal-buttons">
+        <button id="copyBtn" class="modal-btn copy">
+          <i class="fas fa-copy"></i> Copiar Link
+        </button>
+        <a id="visitBtn" target="_blank" class="modal-btn visit">
+          <i class="fas fa-external-link-alt"></i> Visitar Site
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FORMAÇÃO -->
-  <section id="formacao" class="section">
-    <h2 class="section-title">Formação & Experiência</h2>
-    <div class="timeline">
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <span class="date">2023 - Presente</span>
-          <h3>ETIC Algarve</h3>
-          <p>Curso de Programação de Jogos Digitais</p>
-          <p>Especialização em Unity, C#, design de jogos e desenvolvimento 3D.</p>
-        </div>
-      </div>
-      
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <span class="date">2023</span>
-          <h3>Game Jam Local</h3>
-          <p>Participação em Game Jam de 48h</p>
-          <p>Desenvolvimento de protótipo completo em equipe com Unity.</p>
-        </div>
-      </div>
-      
-      <div class="timeline-item fade-in">
-        <div class="timeline-content">
-          <span class="date">2020 - 2023</span>
-          <h3>Escola Secundária</h3>
-          <p>Curso Científico-Tecnológico</p>
-          <p>Foco em matemática, física e tecnologias de informação.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section id="contato" class="section">
-    <h2 class="section-title">Entre em Contato</h2>
-    <div class="contact-container">
-      <div class="contact-info fade-in">
-        <h3>Informações de Contato</h3>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div>
-            <h4>Email</h4>
-            <p>jose_rodrigues@eticalgarve.com</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div>
-            <h4>Localização</h4>
-            <p>Algarve, Portugal</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div>
-            <h4>Formação</h4>
-            <p>ETIC Algarve - Programação de Jogos</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>José Pedro Rodrigues</h3>
-        <p>Desenvolvedor de Jogos especializado em Unity e C#, criando experiências interativas únicas.</p>
-        <div class="social-links">
-          <a href="https://github.com/pedroorodrigues" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://pedroorodrigues.itch.io" target="_blank">
-            <i class="fab fa-itch-io"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="mailto:jose_rodrigues@eticalgarve.com">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Links Rápidos</h3>
-        <ul class="footer-links">
-          <li><a href="#home">Início</a></li>
-          <li><a href="#sobre">Sobre Mim</a></li>
-          <li><a href="#habilidades">Habilidades</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#formacao">Formação</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Habilidades Principais</h3>
-        <ul class="footer-links">
-          <li><a>Unity Development</a></li>
-          <li><a>C# Programming</a></li>
-          <li><a>Game Design</a></li>
-          <li><a>3D Modeling (Blender)</a></li>
-          <li><a>UI/UX Design</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="copyright">
-      <p>© 2025 • José Pedro Rodrigues • Desenvolvedor de Jogos</p>
-      <p>Portfólio desenvolvido com HTML, CSS e JavaScript</p>
+    <div class="footer-info">
+      <p>© 2025 • José Pedro Rodrigues</p>
+      <p>Desenvolvedor de Jogos | ETIC Algarve</p>
     </div>
   </footer>
 
   <script>
-    // Scroll suave para âncoras
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if(targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Ativar links na navegação conforme scroll
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if(scrollY >= sectionTop - 100) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    });
-
-    // Animação de fade-in ao scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+    // Dados dos projetos
+    const projects = {
+      quantum: {
+        title: "Quantum Game",
+        desc: "Jogo de puzzles publicado na itch.io com mecânicas quânticas inovadoras. Desenvolvido com Unity e C#, focando em lógica e resolução de problemas.",
+        link: "https://joelfernandes.itch.io/the-quantum-game"
+      },
+      space: {
+        title: "Space Adventure",
+        desc: "Jogo 3D de exploração espacial atualmente em desenvolvimento. Inclui sistema de combate, elementos RPG e missões complexas.",
+        link: "#"
+      },
+      pixel: {
+        title: "Pixel Platformer",
+        desc: "Jogo 2D em pixel art com mecânicas de plataforma tradicionais e elementos colecionáveis. Focado em gameplay fluida e design visual.",
+        link: "#"
+      }
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-        }
-      });
-    }, observerOptions);
+    // Elementos DOM
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const copyBtn = document.getElementById('copyBtn');
+    const visitBtn = document.getElementById('visitBtn');
+    const closeBtn = document.querySelector('.close');
 
-    // Observar todos os elementos com classe .fade-in
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
+    // Abrir modal
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const projectId = card.dataset.modal;
+        const project = projects[projectId];
+        
+        modalTitle.textContent = project.title;
+        modalDesc.textContent = project.desc;
+        visitBtn.href = project.link;
+        copyBtn.dataset.link = project.link;
+        
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      });
     });
 
-    // Navbar transparente ao topo, opaca ao descer
-    window.addEventListener('scroll', () => {
-      const navbar = document.querySelector('.navbar');
-      if(window.scrollY > 50) {
-        navbar.style.background = 'rgba(11, 15, 25, 0.95)';
-      } else {
-        navbar.style.background = 'rgba(11, 15, 25, 0.8)';
+    // Fechar modal
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    };
+
+    window.onclick = e => {
+      if(e.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    // Copiar link
+    copyBtn.onclick = () => {
+      navigator.clipboard.writeText(copyBtn.dataset.link)
+        .then(() => {
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+          copyBtn.style.background = '#10b981';
+          
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+            copyBtn.style.background = '';
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('Erro ao copiar:', err);
+        });
+    };
+
+    // Tecla ESC fecha modal
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && modal.style.display === 'flex') {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
       }
     });
   </script>
