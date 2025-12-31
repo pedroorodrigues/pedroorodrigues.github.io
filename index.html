@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
 
     body{
       font-family:"Segoe UI", sans-serif;
@@ -35,20 +31,19 @@
     .hero h1{
       font-size:3rem;
       margin-bottom:16px;
-      font-weight:600;
     }
 
     .hero p{
       max-width:650px;
       font-size:1.1rem;
       opacity:0.8;
-      margin-bottom:48px;
+      margin-bottom:32px;
     }
 
-    /* BOTÕES CENTRAIS */
+    /* BOTÕES MAIS JUNTOS */
     .hero-buttons{
       display:flex;
-      gap:40px;
+      gap:20px; /* antes era 40 */
       flex-wrap:wrap;
       justify-content:center;
     }
@@ -56,12 +51,11 @@
     .hero-buttons a{
       background:#2563eb;
       color:white;
-      padding:22px 64px;
+      padding:20px 52px;
       border-radius:999px;
       text-decoration:none;
-      font-size:1.2rem;
-      font-weight:500;
-      transition:all 0.3s ease;
+      font-size:1.15rem;
+      transition:0.3s;
     }
 
     .hero-buttons a:hover{
@@ -69,7 +63,7 @@
       transform:translateY(-2px);
     }
 
-    /* SECTION */
+    /* SECTIONS */
     .section{
       max-width:900px;
       margin:120px auto;
@@ -78,14 +72,8 @@
     }
 
     .section h2{
-      font-size:1.8rem;
       color:#60a5fa;
       margin-bottom:24px;
-    }
-
-    .section p{
-      font-size:1.05rem;
-      opacity:0.85;
     }
 
     /* CONTACT */
@@ -96,7 +84,6 @@
 
     .contact-email{
       margin-bottom:20px;
-      font-size:1rem;
       opacity:0.85;
     }
 
@@ -113,67 +100,65 @@
       border-radius:999px;
       color:#e5e7eb;
       text-decoration:none;
-      transition:all 0.3s ease;
+      transition:0.3s;
     }
 
     .contact-buttons a:hover{
       background:#2563eb;
-      color:white;
     }
 
+    /* RODAPÉ MAIS ESCURO */
     footer{
       margin-top:auto;
+      background:#020617;
       text-align:center;
-      padding:60px 20px;
-      opacity:0.45;
+      padding:50px 20px;
+      opacity:0.7;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Desenvolvedor de Jogos</h1>
-    <p>
-      Estudante na ETIC Algarve focado em criar experiências interativas
-      e mecânicas de gameplay.
-    </p>
+<section class="hero">
+  <h1>Desenvolvedor de Jogos</h1>
+  <p>
+    Estudante na ETIC Algarve focado em criar experiências interativas
+    e mecânicas de gameplay.
+  </p>
 
-    <div class="hero-buttons">
-      <a href="projects.html">Projetos</a>
-      <a href="skills.html">Formação</a>
-      <a href="abilities.html">Habilidades</a>
-    </div>
-  </section>
+  <div class="hero-buttons">
+    <a href="projects.html">Projetos</a>
+    <a href="skills.html">Formação</a>
+    <a href="abilities.html">Habilidades</a>
+  </div>
+</section>
 
-  <!-- SOBRE -->
-  <section class="section">
-    <h2>Sobre mim</h2>
-    <p>
-      Sou estudante de programação na ETIC Algarve, com foco em desenvolvimento
-      de jogos. Tenho interesse em Unity, mecânicas de gameplay e design de jogos.
-    </p>
-  </section>
+<section class="section">
+  <h2>Sobre mim</h2>
+  <p>
+    Sou estudante de programação na ETIC Algarve, com foco em desenvolvimento
+    de jogos. Tenho interesse em Unity, mecânicas de gameplay e design de jogos.
+  </p>
+</section>
 
-  <!-- CONTACTO -->
-  <section class="contact">
-    <h2>Contato</h2>
+<section class="contact">
+  <h2>Contato</h2>
 
-    <div class="contact-email">
-      Email: jose_rodrigues@eticalgarve.com
-    </div>
+  <div class="contact-email">
+    Email: jose_rodrigues@eticalgarve.com
+  </div>
 
-    <div class="contact-buttons">
-      <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
-      <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
-      <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">LinkedIn</a>
-    </div>
-  </section>
+  <div class="contact-buttons">
+    <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
+    <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
+    <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">LinkedIn</a>
+  </div>
+</section>
 
-  <footer>
-    © 2025 • José Pedro Rodrigues
-  </footer>
+<footer>
+  © 2025 • José Pedro Rodrigues
+</footer>
 
 </body>
 </html>
