@@ -2,175 +2,536 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>José Pedro Rodrigues | Portfólio</title>
+  <title>Habilidades | José Pedro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-
-    body{
-      font-family:"Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #0b0f19, #111827);
-      color:#e5e7eb;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
+    :root {
+      --primary: #2563eb;
+      --dark-bg: #0b0f19;
+      --card-bg: #1e293b;
+      --text: #e5e7eb;
+      --accent: #60a5fa;
+      --secondary: #10b981;
     }
 
-    /* HERO */
-    .hero{
-      min-height:80vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:40px 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .hero h1{
-      font-size:3rem;
-      margin-bottom:16px;
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg), #111827);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .hero p{
-      max-width:650px;
-      font-size:1.1rem;
-      opacity:0.8;
-      margin-bottom:32px;
+    /* HEADER */
+    .page-header {
+      background: rgba(11, 15, 25, 0.95);
+      padding: 40px 20px;
+      text-align: center;
     }
 
-    /* BOTÕES MAIS JUNTOS - REDUZIDO DE 20px PARA 12px */
-    .hero-buttons{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      justify-content:center;
+    .back-btn {
+      background: var(--primary);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .hero-buttons a{
-      background:#2563eb;
-      color:white;
-      padding:16px 36px;
-      border-radius:999px;
-      text-decoration:none;
-      font-size:1.1rem;
-      transition:0.3s;
+    .back-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
     }
 
-    .hero-buttons a:hover{
-      background:#1d4ed8;
-      transform:translateY(-2px);
+    /* CONTAINER PRINCIPAL */
+    .container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
     }
 
-    /* SECTIONS */
-    .section{
-      max-width:900px;
-      margin:60px auto;
-      padding:0 20px;
-      text-align:center;
+    .page-title {
+      text-align: center;
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      position: relative;
     }
 
-    .section h2{
-      color:#60a5fa;
-      margin-bottom:24px;
+    .page-title::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 3px;
+      background: var(--secondary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    /* RODAPÉ MAIS ESCURO E COM INFORMAÇÕES DE CONTATO */
-    footer{
-      margin-top:auto;
-      background:#020617;
-      text-align:center;
-      padding:40px 20px;
+    /* GRID DE HABILIDADES */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
     }
 
-    .contact-info{
-      margin-bottom:30px;
+    .skill-category {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 30px;
+      transition: transform 0.3s;
     }
 
-    .contact-info h2{
-      color:#60a5fa;
-      margin-bottom:20px;
-      font-size:1.5rem;
+    .skill-category:hover {
+      transform: translateY(-5px);
     }
 
-    .contact-email{
-      margin-bottom:20px;
-      font-size:1.1rem;
-      opacity:0.85;
+    .skill-category h3 {
+      color: var(--accent);
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .contact-links{
-      display:flex;
-      gap:16px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-bottom:30px;
+    .skill-category h3 i {
+      color: var(--secondary);
     }
 
-    .contact-links a{
-      background:#1e293b;
-      padding:12px 28px;
-      border-radius:999px;
-      color:#e5e7eb;
-      text-decoration:none;
-      transition:0.3s;
-      font-size:1rem;
+    .skill-list {
+      list-style: none;
     }
 
-    .contact-links a:hover{
-      background:#2563eb;
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .copyright{
-      opacity:0.5;
-      font-size:0.9rem;
-      padding-top:20px;
-      border-top:1px solid rgba(255,255,255,0.1);
+    .skill-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-level {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .level-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .level-dot.active {
+      background: var(--secondary);
+    }
+
+    /* BARRAS DE HABILIDADE VERTICAIS (MANTENDO SEU DESIGN) */
+    .bars-section {
+      margin: 80px 0;
+    }
+
+    .bars-title {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 50px;
+      font-size: 2rem;
+    }
+
+    .skills-bars-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 50px;
+      height: 300px;
+      margin-top: 50px;
+    }
+
+    .skill-bar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .skill-bar {
+      width: 60px;
+      height: 200px;
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 15px 15px 0 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .skill-level-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, var(--primary), var(--accent));
+      border-radius: 15px 15px 0 0;
+      transition: height 1s ease;
+    }
+
+    .skill-percentage {
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .skill-label {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .skill-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    /* TOOLTIPS */
+    .skill-item {
+      position: relative;
+      cursor: help;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark-bg);
+      color: var(--text);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+      z-index: 10;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .skill-item:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #020617;
+      text-align: center;
+      padding: 50px 20px;
+      margin-top: auto;
+    }
+
+    .footer-info {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .skills-bars-container {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        gap: 30px;
+      }
+      
+      .skill-bar-wrapper {
+        flex-direction: row;
+        gap: 20px;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .skill-bar {
+        width: 40px;
+        height: 150px;
+      }
+      
+      .skill-label {
+        margin-top: 0;
+        text-align: left;
+        flex: 1;
+      }
     }
   </style>
 </head>
-
 <body>
 
-<section class="hero">
-  <h1>Desenvolvedor de Jogos</h1>
-  <p>
-    Estudante na ETIC Algarve focado em criar experiências interativas
-    e mecânicas de gameplay.
-  </p>
+<header class="page-header">
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i> Voltar ao Início
+  </a>
+</header>
 
-  <div class="hero-buttons">
-    <a href="projects.html">Projetos</a>
-    <a href="skills.html">Formação</a>
-    <a href="abilities.html">Habilidades</a>
+<div class="container">
+  <h1 class="page-title">Minhas Habilidades</h1>
+  
+  <!-- GRID DE CATEGORIAS -->
+  <div class="skills-grid">
+    <!-- DESENVOLVIMENTO -->
+    <div class="skill-category">
+      <h3><i class="fas fa-code"></i> Desenvolvimento</h3>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fab fa-unity"></i> Unity
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Avançado - 2 anos de experiência</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-code"></i> C#
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Avançado - Linguagem principal</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fab fa-js"></i> JavaScript
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Intermediário - Web e scripts</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fab fa-git-alt"></i> Git
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Intermediário - Controle de versão</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- DESIGN 3D & 2D -->
+    <div class="skill-category">
+      <h3><i class="fas fa-cube"></i> Design 3D & 2D</h3>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-cube"></i> Blender
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Intermediário - Modelagem básica</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-paint-brush"></i> Photoshop
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Intermediário - UI e texturas</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-palette"></i> UI/UX Design
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Básico - Interfaces de usuário</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- GAME DESIGN -->
+    <div class="skill-category">
+      <h3><i class="fas fa-gamepad"></i> Game Design</h3>
+      <ul class="skill-list">
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-puzzle-piece"></i> Mecânicas
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Avançado - Design de gameplay</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-balance-scale"></i> Balanceamento
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Intermediário - Balance de jogo</span>
+          </div>
+        </li>
+        <li class="skill-item">
+          <div class="skill-name">
+            <i class="fas fa-book"></i> Narrativa
+          </div>
+          <div class="skill-level">
+            <span class="level-dot active"></span>
+            <span class="level-dot active"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="level-dot"></span>
+            <span class="tooltip">Básico - Storytelling em jogos</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
-</section>
-
-<section class="section">
-  <h2>Sobre mim</h2>
-  <p>
-    Sou estudante de programação na ETIC Algarve, com foco em desenvolvimento
-    de jogos. Tenho interesse em Unity, mecânicas de gameplay e design de jogos.
-  </p>
-</section>
+  
+  <!-- BARRAS VERTICAIS (SEU DESIGN ORIGINAL MELHORADO) -->
+  <div class="bars-section">
+    <h2 class="bars-title">Habilidades em Destaque</h2>
+    <div class="skills-bars-container">
+      <div class="skill-bar-wrapper">
+        <div class="skill-icon">
+          <i class="fab fa-unity"></i>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level-bar" style="height: 90%;">
+            <div class="skill-percentage">90%</div>
+          </div>
+        </div>
+        <div class="skill-label">Unity</div>
+      </div>
+      
+      <div class="skill-bar-wrapper">
+        <div class="skill-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level-bar" style="height: 85%;">
+            <div class="skill-percentage">85%</div>
+          </div>
+        </div>
+        <div class="skill-label">C#</div>
+      </div>
+      
+      <div class="skill-bar-wrapper">
+        <div class="skill-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level-bar" style="height: 70%;">
+            <div class="skill-percentage">70%</div>
+          </div>
+        </div>
+        <div class="skill-label">Blender</div>
+      </div>
+      
+      <div class="skill-bar-wrapper">
+        <div class="skill-icon">
+          <i class="fas fa-paint-brush"></i>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-level-bar" style="height: 65%;">
+            <div class="skill-percentage">65%</div>
+          </div>
+        </div>
+        <div class="skill-label">Photoshop</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
-  <div class="contact-info">
-    <h2>Contato</h2>
-    <div class="contact-email">
-      Email: jose_rodrigues@eticalgarve.com
-    </div>
-    <div class="contact-links">
-      <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
-      <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
-      <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-  <div class="copyright">
-    © 2025 • José Pedro Rodrigues
+  <div class="footer-info">
+    <p>© 2025 • José Pedro Rodrigues</p>
+    <p>Desenvolvedor de Jogos | ETIC Algarve</p>
   </div>
 </footer>
+
+<script>
+  // Animar barras ao carregar a página
+  document.addEventListener('DOMContentLoaded', () => {
+    const bars = document.querySelectorAll('.skill-level-bar');
+    bars.forEach(bar => {
+      const height = bar.style.height;
+      bar.style.height = '0%';
+      
+      setTimeout(() => {
+        bar.style.height = height;
+      }, 300);
+    });
+  });
+</script>
 
 </body>
 </html>
