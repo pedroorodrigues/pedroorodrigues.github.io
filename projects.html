@@ -17,7 +17,6 @@
       min-height:100vh;
     }
 
-    /* BOTÃO CASA */
     .btn-home{
       background:#2563eb;
       color:white;
@@ -31,9 +30,11 @@
       margin:40px auto 0 auto;
     }
 
-    .btn-home:hover{background:#1d4ed8; transform:translateY(-2px);}
+    .btn-home:hover{
+      background:#1d4ed8;
+      transform:translateY(-2px);
+    }
 
-    /* SECTION */
     .section{
       max-width:900px;
       margin:40px auto;
@@ -47,19 +48,15 @@
       color:#60a5fa;
     }
 
-    /* PROJECT CARD */
     .project-card{
-      display:block;
       background:#1e293b;
       padding:36px;
       border-radius:14px;
       margin:0 auto 32px auto;
-      text-decoration:none;
-      color:#e5e7eb;
-      transition:all 0.3s ease;
-      text-align:left;
       max-width:700px;
+      text-align:left;
       cursor:pointer;
+      transition:all 0.3s ease;
     }
 
     .project-card:hover{
@@ -68,19 +65,25 @@
       box-shadow:0 12px 24px rgba(0,0,0,0.3);
     }
 
-    .project-card h3{margin-bottom:12px;font-size:1.4rem;}
-    .project-card p{opacity:0.8;font-size:1.05rem;}
+    .project-card h3{
+      margin-bottom:12px;
+      font-size:1.4rem;
+    }
+
+    .project-card p{
+      opacity:0.85;
+      font-size:1.05rem;
+    }
 
     /* MODAL */
     .modal{
       display:none;
       position:fixed;
-      z-index:999;
-      left:0;top:0;
-      width:100%;height:100%;
+      inset:0;
+      background:rgba(11,15,25,0.95);
       justify-content:center;
       align-items:center;
-      background-color:rgba(11,15,25,0.95);
+      z-index:999;
     }
 
     .modal-content{
@@ -93,78 +96,74 @@
       position:relative;
     }
 
-    .modal-content h3{margin-bottom:16px;font-size:1.6rem;}
-    .modal-content p{margin-bottom:30px;opacity:0.8;font-size:1rem;}
-
     .close{
-      position:absolute; top:16px; right:20px;
-      font-size:1.5rem; cursor:pointer; color:#e5e7eb;
-      transition:color 0.3s ease;
+      position:absolute;
+      top:16px;
+      right:20px;
+      font-size:1.5rem;
+      cursor:pointer;
     }
-
-    .close:hover{color:#2563eb;}
 
     .modal-buttons{
       display:flex;
       justify-content:center;
       gap:20px;
       flex-wrap:wrap;
+      margin-top:20px;
     }
 
     .modal-buttons button,
     .modal-buttons a{
       padding:14px 32px;
       border-radius:999px;
+      border:none;
       font-size:1rem;
       font-weight:500;
-      text-decoration:none;
-      border:none;
       cursor:pointer;
-      transition:all 0.3s ease;
+      text-decoration:none;
+      transition:0.3s;
     }
 
-    .modal-buttons button{background:#374151;color:#e5e7eb;}
-    .modal-buttons button:hover{background:#2563eb;color:white;}
-    .modal-buttons a{background:#2563eb;color:white;}
-    .modal-buttons a:hover{background:#1d4ed8;}
+    .modal-buttons button{
+      background:#374151;
+      color:#e5e7eb;
+    }
 
-    footer{text-align:center;padding:60px 20px;opacity:0.45;margin-top:auto;}
+    .modal-buttons a{
+      background:#2563eb;
+      color:white;
+    }
+
+    footer{
+      text-align:center;
+      padding:60px 20px;
+      opacity:0.45;
+      margin-top:auto;
+    }
   </style>
 </head>
 <body>
 
-<!-- BOTÃO CASA -->
-<a href="index.html" class="btn-home">🏠 Casa</a>
+<a href="index.html" class="btn-home">Casa</a>
 
 <section class="section">
   <h2>Projetos</h2>
 
-  <div class="project-card" data-link="https://exemplo.com/platformer-2d">
-    <h3>Jogo Plataforma 2D</h3>
-    <p>Jogo desenvolvido em Unity com foco em movimento e mecânicas de gameplay.</p>
-  </div>
-
-  <div class="project-card" data-link="https://exemplo.com/fps-prototype">
-    <h3>Protótipo FPS</h3>
-    <p>Protótipo de FPS com sistema básico de armas e inimigos.</p>
-  </div>
-
   <div class="project-card" data-link="https://joelfernandes.itch.io/the-quantum-game">
     <h3>Quantum Game</h3>
-    <p>Jogo interativo lançado na itch.io com mecânicas de lógica quântica.</p>
+    <p>Jogo publicado na itch.io com foco em mecânicas de lógica e puzzles.</p>
   </div>
 
 </section>
 
-<!-- MODAL -->
 <div id="projectModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h3 id="modalTitle">Projeto</h3>
-    <p id="modalDesc">Descrição do projeto...</p>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
     <div class="modal-buttons">
       <button id="copyLink">Copiar Link</button>
-      <a href="#" target="_blank" id="visitSite">Ir para o site</a>
+      <a id="visitSite" target="_blank">Ir para o site</a>
     </div>
   </div>
 </div>
@@ -174,33 +173,32 @@
 </footer>
 
 <script>
-  const projectCards = document.querySelectorAll('.project-card');
+  const cards = document.querySelectorAll('.project-card');
   const modal = document.getElementById('projectModal');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDesc = document.getElementById('modalDesc');
-  const copyBtn = document.getElementById('copyLink');
-  const visitBtn = document.getElementById('visitSite');
-  const closeBtn = document.querySelector('.close');
+  const title = document.getElementById('modalTitle');
+  const desc = document.getElementById('modalDesc');
+  const visit = document.getElementById('visitSite');
+  const copy = document.getElementById('copyLink');
+  const close = document.querySelector('.close');
 
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const title = card.querySelector('h3').innerText;
-      const desc = card.querySelector('p').innerText;
-      const link = card.dataset.link;
-      modalTitle.innerText = title;
-      modalDesc.innerText = desc;
-      visitBtn.href = link;
-      copyBtn.dataset.link = link;
-      modal.style.display='flex';
-    });
+  cards.forEach(card=>{
+    card.onclick=()=>{
+      title.innerText=card.querySelector('h3').innerText;
+      desc.innerText=card.querySelector('p').innerText;
+      visit.href=card.dataset.link;
+      copy.dataset.link=card.dataset.link;
+      modal.style.display="flex";
+    }
   });
 
-  closeBtn.addEventListener('click',()=>modal.style.display='none');
-  window.addEventListener('click',e=>{if(e.target===modal) modal.style.display='none';});
-  copyBtn.addEventListener('click',()=>{navigator.clipboard.writeText(copyBtn.dataset.link).then(()=>{
-    copyBtn.innerText='Copiado!';
-    setTimeout(()=>{copyBtn.innerText='Copiar Link';},1500);
-  })});
+  close.onclick=()=>modal.style.display="none";
+  window.onclick=e=>{if(e.target===modal) modal.style.display="none";}
+
+  copy.onclick=()=>{
+    navigator.clipboard.writeText(copy.dataset.link);
+    copy.innerText="Copiado!";
+    setTimeout(()=>copy.innerText="Copiar Link",1500);
+  }
 </script>
 
 </body>
