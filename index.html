@@ -12,6 +12,7 @@
       --dark-bg: #0b0f19;
       --text: #e5e7eb;
       --accent: #60a5fa;
+      --inactive: rgba(96, 165, 250, 0.3);
     }
 
     * {
@@ -62,20 +63,40 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 15px;
     }
 
     .nav-links a {
       color: var(--text);
       text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 20px;
+      padding: 12px 24px;
+      border-radius: 50px;
       transition: all 0.3s;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .nav-links a:hover {
-      background: rgba(96, 165, 250, 0.1);
+    /* BOTÃO INÍCIO - ESTILO DISCRETO (JÁ ESTAMOS NA PÁGINA INICIAL) */
+    .nav-links a.current {
+      background: rgba(255, 255, 255, 0.05);
       color: var(--accent);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      cursor: default;
+    }
+
+    /* BOTÕES DE NAVEGAÇÃO - AZUIS PARA AS OUTRAS PÁGINAS */
+    .nav-links a.nav-btn {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .nav-links a.nav-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
     }
 
     /* HERO SECTION */
@@ -115,10 +136,10 @@
       line-height: 1.6;
     }
 
-    /* BOTÕES MAIS JUNTOS */
+    /* BOTÕES PRINCIPAIS (HERO) */
     .hero-buttons {
       display: flex;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
       justify-content: center;
       margin-top: 20px;
@@ -297,6 +318,23 @@
       font-size: 0.9rem;
     }
 
+    /* BADGE PARA INDICAR PÁGINA ATUAL */
+    .current-badge {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      margin-left: 5px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
     /* RESPONSIVO */
     @media (max-width: 768px) {
       .hero h1 {
@@ -311,6 +349,11 @@
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+      }
+      
+      .nav-links a {
+        padding: 10px 20px;
+        font-size: 0.95rem;
       }
       
       .hero-buttons {
@@ -335,10 +378,22 @@
         José Pedro
       </div>
       <div class="nav-links">
-        <a href="#home">Início</a>
-        <a href="projects.html">Projetos</a>
-        <a href="skills.html">Formação</a>
-        <a href="abilities.html">Habilidades</a>
+        <!-- BOTÃO INÍCIO DISCRETO (PÁGINA ATUAL) -->
+        <a href="#home" class="current">
+          <i class="fas fa-home"></i> Início
+          <span class="current-badge"></span>
+        </a>
+        
+        <!-- BOTÕES AZUIS PARA OUTRAS PÁGINAS -->
+        <a href="projects.html" class="nav-btn">
+          <i class="fas fa-gamepad"></i> Projetos
+        </a>
+        <a href="skills.html" class="nav-btn">
+          <i class="fas fa-graduation-cap"></i> Formação
+        </a>
+        <a href="abilities.html" class="nav-btn">
+          <i class="fas fa-code"></i> Habilidades
+        </a>
       </div>
     </div>
   </header>
@@ -420,19 +475,35 @@
       <div class="footer-column">
         <h3>Links Rápidos</h3>
         <ul style="list-style: none;">
-          <li style="margin-bottom: 10px;"><a href="#home" style="color: #e5e7eb; text-decoration: none;">Início</a></li>
-          <li style="margin-bottom: 10px;"><a href="projects.html" style="color: #e5e7eb; text-decoration: none;">Projetos</a></li>
-          <li style="margin-bottom: 10px;"><a href="skills.html" style="color: #e5e7eb; text-decoration: none;">Formação</a></li>
-          <li style="margin-bottom: 10px;"><a href="abilities.html" style="color: #e5e7eb; text-decoration: none;">Habilidades</a></li>
+          <li style="margin-bottom: 10px;">
+            <a href="#home" style="color: #e5e7eb; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-home" style="color: #60a5fa;"></i> Início
+            </a>
+          </li>
+          <li style="margin-bottom: 10px;">
+            <a href="projects.html" style="color: #e5e7eb; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-gamepad" style="color: #60a5fa;"></i> Projetos
+            </a>
+          </li>
+          <li style="margin-bottom: 10px;">
+            <a href="skills.html" style="color: #e5e7eb; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-graduation-cap" style="color: #60a5fa;"></i> Formação
+            </a>
+          </li>
+          <li style="margin-bottom: 10px;">
+            <a href="abilities.html" style="color: #e5e7eb; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <i class="fas fa-code" style="color: #60a5fa;"></i> Habilidades
+            </a>
+          </li>
         </ul>
       </div>
       
       <div class="footer-column">
         <h3>Disponível Para</h3>
-        <p>• Estágios em desenvolvimento de jogos</p>
-        <p>• Projetos colaborativos</p>
-        <p>• Game Jams</p>
-        <p>• Desenvolvimento de protótipos</p>
+        <p><i class="fas fa-briefcase" style="color: #10b981; margin-right: 10px;"></i> Estágios em desenvolvimento de jogos</p>
+        <p><i class="fas fa-users" style="color: #10b981; margin-right: 10px;"></i> Projetos colaborativos</p>
+        <p><i class="fas fa-trophy" style="color: #10b981; margin-right: 10px;"></i> Game Jams</p>
+        <p><i class="fas fa-rocket" style="color: #10b981; margin-right: 10px;"></i> Desenvolvimento de protótipos</p>
       </div>
     </div>
     
@@ -468,6 +539,16 @@
       } else {
         header.style.background = 'rgba(11, 15, 25, 0.9)';
       }
+    });
+
+    // Evitar clique no botão "Início" (já estamos na página)
+    document.querySelector('.nav-links a.current').addEventListener('click', (e) => {
+      e.preventDefault();
+      // Apenas faz scroll suave para o topo
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
   </script>
 </body>
