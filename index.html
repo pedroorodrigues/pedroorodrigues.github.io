@@ -2,17 +2,16 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Habilidades | José Pedro</title>
+  <title>José Pedro Rodrigues | Desenvolvedor de Jogos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #2563eb;
+      --primary-dark: #1d4ed8;
       --dark-bg: #0b0f19;
-      --card-bg: #1e293b;
       --text: #e5e7eb;
       --accent: #60a5fa;
-      --secondary: #10b981;
     }
 
     * {
@@ -23,515 +22,453 @@
 
     body {
       font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, var(--dark-bg), #111827);
-      color: var(--text);
+      background: linear-gradient(135deg, #0b0f19, #111827);
+      color: #e5e7eb;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* HEADER */
-    .page-header {
+    /* HEADER COM NAVEGAÇÃO */
+    header {
       background: rgba(11, 15, 25, 0.95);
-      padding: 40px 20px;
-      text-align: center;
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .back-btn {
-      background: var(--primary);
-      color: white;
-      padding: 16px 40px;
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: #10b981;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(96, 165, 250, 0.1);
+      color: var(--accent);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #60a5fa, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    /* BOTÕES MAIS JUNTOS */
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 16px 32px;
       border-radius: 50px;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: 600;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
       gap: 10px;
     }
 
-    .back-btn:hover {
-      background: #1d4ed8;
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
       transform: translateY(-3px);
     }
 
-    /* CONTAINER PRINCIPAL */
-    .container {
-      max-width: 1200px;
-      margin: 60px auto;
+    /* SOBRE */
+    .section {
+      max-width: 900px;
+      margin: 80px auto;
       padding: 0 20px;
-    }
-
-    .page-title {
       text-align: center;
-      color: var(--accent);
-      font-size: 2.5rem;
-      margin-bottom: 60px;
-      position: relative;
     }
 
-    .page-title::after {
+    .section h2 {
+      color: #60a5fa;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h2::after {
       content: '';
       position: absolute;
-      width: 100px;
+      width: 60px;
       height: 3px;
-      background: var(--secondary);
-      bottom: -15px;
+      background: #10b981;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
+      border-radius: 2px;
     }
 
-    /* GRID DE HABILIDADES */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 80px;
+    .section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .skill-category {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 30px;
-      transition: transform 0.3s;
-    }
-
-    .skill-category:hover {
-      transform: translateY(-5px);
-    }
-
-    .skill-category h3 {
-      color: var(--accent);
-      margin-bottom: 25px;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .skill-category h3 i {
-      color: var(--secondary);
-    }
-
-    .skill-list {
-      list-style: none;
-    }
-
-    .skill-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .skill-name {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .skill-level {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .level-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .level-dot.active {
-      background: var(--secondary);
-    }
-
-    /* BARRAS DE HABILIDADE VERTICAIS (MANTENDO SEU DESIGN) */
-    .bars-section {
-      margin: 80px 0;
-    }
-
-    .bars-title {
-      text-align: center;
-      color: var(--accent);
-      margin-bottom: 50px;
-      font-size: 2rem;
-    }
-
-    .skills-bars-container {
+    /* HABILIDADES RÁPIDAS */
+    .quick-skills {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-      gap: 50px;
-      height: 300px;
-      margin-top: 50px;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
     }
 
-    .skill-bar-wrapper {
+    .skill-tag {
+      background: rgba(96, 165, 250, 0.1);
+      color: var(--accent);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 1rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 8px;
     }
 
-    .skill-bar {
-      width: 60px;
-      height: 200px;
-      background: rgba(30, 41, 59, 0.5);
-      border-radius: 15px 15px 0 0;
-      position: relative;
-      overflow: hidden;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .skill-level-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to top, var(--primary), var(--accent));
-      border-radius: 15px 15px 0 0;
-      transition: height 1s ease;
-    }
-
-    .skill-percentage {
-      position: absolute;
-      top: -30px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .skill-label {
-      margin-top: 15px;
-      font-size: 1.1rem;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    .skill-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: var(--accent);
-    }
-
-    /* TOOLTIPS */
-    .skill-item {
-      position: relative;
-      cursor: help;
-    }
-
-    .tooltip {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--dark-bg);
-      color: var(--text);
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s;
-      z-index: 10;
-      border: 1px solid rgba(96, 165, 250, 0.2);
-    }
-
-    .skill-item:hover .tooltip {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* FOOTER */
+    /* FOOTER COMPLETO */
     footer {
       background: #020617;
-      text-align: center;
-      padding: 50px 20px;
-      margin-top: auto;
+      margin-top: 100px;
+      padding: 60px 20px 30px;
     }
 
-    .footer-info {
-      opacity: 0.7;
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-column h3 {
+      color: #60a5fa;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .footer-column p {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      margin-bottom: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(96, 165, 250, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: #1e293b;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.6;
       font-size: 0.9rem;
     }
 
     /* RESPONSIVO */
     @media (max-width: 768px) {
-      .skills-bars-container {
-        flex-direction: column;
-        height: auto;
-        align-items: center;
-        gap: 30px;
+      .hero h1 {
+        font-size: 2.5rem;
       }
       
-      .skill-bar-wrapper {
-        flex-direction: row;
+      .nav-container {
+        flex-direction: column;
         gap: 20px;
+      }
+      
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
         width: 100%;
         max-width: 300px;
-      }
-      
-      .skill-bar {
-        width: 40px;
-        height: 150px;
-      }
-      
-      .skill-label {
-        margin-top: 0;
-        text-align: left;
-        flex: 1;
+        justify-content: center;
       }
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-gamepad"></i>
+        José Pedro
+      </div>
+      <div class="nav-links">
+        <a href="#home">Início</a>
+        <a href="projects.html">Projetos</a>
+        <a href="skills.html">Formação</a>
+        <a href="abilities.html">Habilidades</a>
+      </div>
+    </div>
+  </header>
 
-<header class="page-header">
-  <a href="index.html" class="back-btn">
-    <i class="fas fa-arrow-left"></i> Voltar ao Início
-  </a>
-</header>
-
-<div class="container">
-  <h1 class="page-title">Minhas Habilidades</h1>
-  
-  <!-- GRID DE CATEGORIAS -->
-  <div class="skills-grid">
-    <!-- DESENVOLVIMENTO -->
-    <div class="skill-category">
-      <h3><i class="fas fa-code"></i> Desenvolvimento</h3>
-      <ul class="skill-list">
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fab fa-unity"></i> Unity
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Avançado - 2 anos de experiência</span>
-          </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-code"></i> C#
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Avançado - Linguagem principal</span>
-          </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fab fa-js"></i> JavaScript
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Intermediário - Web e scripts</span>
-          </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fab fa-git-alt"></i> Git
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Intermediário - Controle de versão</span>
-          </div>
-        </li>
-      </ul>
+  <section id="home" class="hero">
+    <h1>Desenvolvedor de Jogos</h1>
+    <div class="hero-subtitle">Unity Developer & Game Designer</div>
+    <p>
+      Estudante na ETIC Algarve focado em criar experiências interativas
+      e mecânicas de gameplay inovadoras. Transformando ideias em jogos envolventes.
+    </p>
+    
+    <div class="quick-skills">
+      <span class="skill-tag"><i class="fab fa-unity"></i> Unity</span>
+      <span class="skill-tag"><i class="fas fa-code"></i> C#</span>
+      <span class="skill-tag"><i class="fas fa-cube"></i> Blender</span>
+      <span class="skill-tag"><i class="fas fa-paint-brush"></i> Photoshop</span>
     </div>
     
-    <!-- DESIGN 3D & 2D -->
-    <div class="skill-category">
-      <h3><i class="fas fa-cube"></i> Design 3D & 2D</h3>
-      <ul class="skill-list">
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-cube"></i> Blender
+    <div class="hero-buttons">
+      <a href="projects.html" class="btn btn-primary">
+        <i class="fas fa-gamepad"></i> Ver Projetos
+      </a>
+      <a href="#contato" class="btn btn-secondary">
+        <i class="fas fa-envelope"></i> Contato
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Sobre Mim</h2>
+    <p>
+      Sou estudante de programação na ETIC Algarve, com foco em desenvolvimento
+      de jogos. Tenho experiência prática com Unity, C#, e ferramentas de design 3D
+      como Blender. Meu objetivo é criar jogos que não apenas divirtam, mas também
+      contem histórias e proporcionem experiências memoráveis aos jogadores.
+    </p>
+  </section>
+
+  <footer id="contato">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Contato</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>jose_rodrigues@eticalgarve.com</p>
+            </div>
           </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Intermediário - Modelagem básica</span>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h4>Localização</h4>
+              <p>Algarve, Portugal</p>
+            </div>
           </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-paint-brush"></i> Photoshop
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Intermediário - UI e texturas</span>
-          </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-palette"></i> UI/UX Design
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Básico - Interfaces de usuário</span>
-          </div>
-        </li>
-      </ul>
+        </div>
+        
+        <div class="social-links">
+          <a href="https://github.com/pedroorodrigues" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://pedroorodrigues.itch.io" target="_blank" title="itch.io">
+            <i class="fab fa-itch-io"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Links Rápidos</h3>
+        <ul style="list-style: none;">
+          <li style="margin-bottom: 10px;"><a href="#home" style="color: #e5e7eb; text-decoration: none;">Início</a></li>
+          <li style="margin-bottom: 10px;"><a href="projects.html" style="color: #e5e7eb; text-decoration: none;">Projetos</a></li>
+          <li style="margin-bottom: 10px;"><a href="skills.html" style="color: #e5e7eb; text-decoration: none;">Formação</a></li>
+          <li style="margin-bottom: 10px;"><a href="abilities.html" style="color: #e5e7eb; text-decoration: none;">Habilidades</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Disponível Para</h3>
+        <p>• Estágios em desenvolvimento de jogos</p>
+        <p>• Projetos colaborativos</p>
+        <p>• Game Jams</p>
+        <p>• Desenvolvimento de protótipos</p>
+      </div>
     </div>
     
-    <!-- GAME DESIGN -->
-    <div class="skill-category">
-      <h3><i class="fas fa-gamepad"></i> Game Design</h3>
-      <ul class="skill-list">
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-puzzle-piece"></i> Mecânicas
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Avançado - Design de gameplay</span>
-          </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-balance-scale"></i> Balanceamento
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Intermediário - Balance de jogo</span>
-          </div>
-        </li>
-        <li class="skill-item">
-          <div class="skill-name">
-            <i class="fas fa-book"></i> Narrativa
-          </div>
-          <div class="skill-level">
-            <span class="level-dot active"></span>
-            <span class="level-dot active"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="level-dot"></span>
-            <span class="tooltip">Básico - Storytelling em jogos</span>
-          </div>
-        </li>
-      </ul>
+    <div class="copyright">
+      <p>© 2025 • José Pedro Rodrigues</p>
+      <p>Desenvolvedor de Jogos | ETIC Algarve</p>
     </div>
-  </div>
-  
-  <!-- BARRAS VERTICAIS (SEU DESIGN ORIGINAL MELHORADO) -->
-  <div class="bars-section">
-    <h2 class="bars-title">Habilidades em Destaque</h2>
-    <div class="skills-bars-container">
-      <div class="skill-bar-wrapper">
-        <div class="skill-icon">
-          <i class="fab fa-unity"></i>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-level-bar" style="height: 90%;">
-            <div class="skill-percentage">90%</div>
-          </div>
-        </div>
-        <div class="skill-label">Unity</div>
-      </div>
-      
-      <div class="skill-bar-wrapper">
-        <div class="skill-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-level-bar" style="height: 85%;">
-            <div class="skill-percentage">85%</div>
-          </div>
-        </div>
-        <div class="skill-label">C#</div>
-      </div>
-      
-      <div class="skill-bar-wrapper">
-        <div class="skill-icon">
-          <i class="fas fa-cube"></i>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-level-bar" style="height: 70%;">
-            <div class="skill-percentage">70%</div>
-          </div>
-        </div>
-        <div class="skill-label">Blender</div>
-      </div>
-      
-      <div class="skill-bar-wrapper">
-        <div class="skill-icon">
-          <i class="fas fa-paint-brush"></i>
-        </div>
-        <div class="skill-bar">
-          <div class="skill-level-bar" style="height: 65%;">
-            <div class="skill-percentage">65%</div>
-          </div>
-        </div>
-        <div class="skill-label">Photoshop</div>
-      </div>
-    </div>
-  </div>
-</div>
+  </footer>
 
-<footer>
-  <div class="footer-info">
-    <p>© 2025 • José Pedro Rodrigues</p>
-    <p>Desenvolvedor de Jogos | ETIC Algarve</p>
-  </div>
-</footer>
-
-<script>
-  // Animar barras ao carregar a página
-  document.addEventListener('DOMContentLoaded', () => {
-    const bars = document.querySelectorAll('.skill-level-bar');
-    bars.forEach(bar => {
-      const height = bar.style.height;
-      bar.style.height = '0%';
-      
-      setTimeout(() => {
-        bar.style.height = height;
-      }, 300);
+  <script>
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
-  });
-</script>
 
+    // Header com efeito de scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if(window.scrollY > 50) {
+        header.style.background = 'rgba(11, 15, 25, 0.95)';
+      } else {
+        header.style.background = 'rgba(11, 15, 25, 0.9)';
+      }
+    });
+  </script>
 </body>
 </html>
