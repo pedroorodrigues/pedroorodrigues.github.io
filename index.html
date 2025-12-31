@@ -4,40 +4,56 @@
   <meta charset="UTF-8">
   <title>José Pedro Rodrigues | Portfólio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html,body{height:100%;}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
     body{
-      font-family:"Segoe UI",sans-serif;
-      background: linear-gradient(135deg,#0b0f19,#111827);
+      font-family:"Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0b0f19, #111827);
       color:#e5e7eb;
+      min-height:100vh;
       display:flex;
       flex-direction:column;
-      min-height:100vh;
     }
 
-    /* HERO CENTRALIZADO */
+    /* HERO */
     .hero{
+      min-height:100vh;
       display:flex;
       flex-direction:column;
+      justify-content:center;
       align-items:center;
       text-align:center;
-      padding:160px 20px 120px;
+      padding:40px 20px;
     }
 
-    .hero h1{ font-size:3rem; font-weight:600; margin-bottom:20px; }
-    .hero p{ max-width:600px; opacity:0.8; font-size:1.1rem; margin-bottom:40px; }
+    .hero h1{
+      font-size:3rem;
+      margin-bottom:16px;
+      font-weight:600;
+    }
+
+    .hero p{
+      max-width:650px;
+      font-size:1.1rem;
+      opacity:0.8;
+      margin-bottom:48px;
+    }
 
     /* BOTÕES CENTRAIS */
-    .hero-actions{
+    .hero-buttons{
       display:flex;
-      justify-content:center;
       gap:40px;
       flex-wrap:wrap;
+      justify-content:center;
     }
 
-    .hero-actions a{
+    .hero-buttons a{
       background:#2563eb;
       color:white;
       padding:22px 64px;
@@ -45,99 +61,119 @@
       text-decoration:none;
       font-size:1.2rem;
       font-weight:500;
-      transition: all 0.3s ease;
+      transition:all 0.3s ease;
     }
 
-    .hero-actions a:hover{ background:#1d4ed8; transform:translateY(-2px); }
+    .hero-buttons a:hover{
+      background:#1d4ed8;
+      transform:translateY(-2px);
+    }
 
-    /* SECTIONS */
+    /* SECTION */
     .section{
       max-width:900px;
-      margin:80px auto;
+      margin:120px auto;
       padding:0 20px;
       text-align:center;
     }
 
     .section h2{
-      margin-bottom:32px;
       font-size:1.8rem;
       color:#60a5fa;
+      margin-bottom:24px;
+    }
+
+    .section p{
+      font-size:1.05rem;
+      opacity:0.85;
     }
 
     /* CONTACT */
-    .contact-section{
-      margin-top:200px; /* espaço maior do conteúdo acima */
+    .contact{
+      margin-top:200px;
+      text-align:center;
     }
 
-    .contact-links{
+    .contact-email{
+      margin-bottom:20px;
+      font-size:1rem;
+      opacity:0.85;
+    }
+
+    .contact-buttons{
       display:flex;
       gap:20px;
-      flex-wrap:wrap;
       justify-content:center;
-      margin-top:20px;
+      flex-wrap:wrap;
     }
 
-    .contact-links a{
+    .contact-buttons a{
       background:#1e293b;
-      padding:16px 28px;
+      padding:16px 32px;
       border-radius:999px;
-      text-decoration:none;
       color:#e5e7eb;
-      font-size:1rem;
-      transition: all 0.3s ease;
+      text-decoration:none;
+      transition:all 0.3s ease;
     }
 
-    .contact-links a:hover{
+    .contact-buttons a:hover{
       background:#2563eb;
       color:white;
     }
 
-    .contact-email{
-      font-size:1rem;
-      opacity:0.85;
-      margin-bottom:16px;
-    }
-
     footer{
+      margin-top:auto;
       text-align:center;
       padding:60px 20px;
       opacity:0.45;
-      margin-top:auto;
     }
   </style>
 </head>
+
 <body>
 
-<!-- HERO -->
-<main class="hero">
-  <h1>Desenvolvedor de Jogos</h1>
-  <p>Estudante na ETIC Algarve focado em criar experiências interativas e mecânicas de gameplay.</p>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Desenvolvedor de Jogos</h1>
+    <p>
+      Estudante na ETIC Algarve focado em criar experiências interativas
+      e mecânicas de gameplay.
+    </p>
 
-  <div class="hero-actions">
-    <a href="projects.html">Projetos</a>
-    <a href="skills.html">Formação</a>
-    <a href="abilities.html">Habilidades</a>
-  </div>
-</main>
+    <div class="hero-buttons">
+      <a href="projects.html">Projetos</a>
+      <a href="skills.html">Formação</a>
+      <a href="abilities.html">Habilidades</a>
+    </div>
+  </section>
 
-<section class="section">
-  <h2>Sobre mim</h2>
-  <p>Sou estudante de programação na ETIC Algarve, com foco em desenvolvimento de jogos. Tenho interesse em Unity, mecânicas de gameplay e design de jogos.</p>
-</section>
+  <!-- SOBRE -->
+  <section class="section">
+    <h2>Sobre mim</h2>
+    <p>
+      Sou estudante de programação na ETIC Algarve, com foco em desenvolvimento
+      de jogos. Tenho interesse em Unity, mecânicas de gameplay e design de jogos.
+    </p>
+  </section>
 
-<section class="section contact-section">
-  <h2>Contato</h2>
-  <div class="contact-email">Email: jose_rodrigues@eticalgarve.com</div>
-  <div class="contact-links">
-    <a href="https://linkedin.com/in/joserodrigues" target="_blank">LinkedIn</a>
-    <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
-    <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
-  </div>
-</section>
+  <!-- CONTACTO -->
+  <section class="contact">
+    <h2>Contato</h2>
 
-<footer>
-  <p>© 2025 • José Pedro Rodrigues</p>
-</footer>
+    <div class="contact-email">
+      Email: jose_rodrigues@eticalgarve.com
+    </div>
+
+    <div class="contact-buttons">
+      <a href="https://github.com/pedroorodrigues" target="_blank">GitHub</a>
+      <a href="https://pedroorodrigues.itch.io" target="_blank">itch.io</a>
+      <a href="https://www.linkedin.com/in/jos%C3%A9-rodrigues-63a3a0389/" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 • José Pedro Rodrigues
+  </footer>
 
 </body>
 </html>
