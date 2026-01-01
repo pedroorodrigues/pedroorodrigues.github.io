@@ -13,6 +13,7 @@
       --card-bg: #1e293b;
       --text: #e5e7eb;
       --accent: #60a5fa;
+      --secondary: #10b981;
     }
 
     * {
@@ -70,7 +71,7 @@
       position: absolute;
       width: 100px;
       height: 3px;
-      background: #10b981;
+      background: var(--secondary);
       bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
@@ -261,6 +262,17 @@
       transform: translateY(-2px);
     }
 
+    /* BOTÃO PARA GLOBAL GAME JAM (estilo diferente) */
+    .modal-btn.ggj {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .modal-btn.ggj:hover {
+      background: #0da271;
+      transform: translateY(-2px);
+    }
+
     /* FOOTER */
     footer {
       background: #020617;
@@ -304,7 +316,6 @@
     <!-- QUANTUM GAME -->
     <div class="project-card" data-modal="quantum">
       <div class="project-image">
-        <!-- SUA IMAGEM DO QUANTUM GAME AQUI -->
         <img src="imagens/quantum-game.png" alt="Quantum Game">
       </div>
       <div class="project-content">
@@ -324,7 +335,6 @@
     <!-- SOAPRISE -->
     <div class="project-card" data-modal="soaprise">
       <div class="project-image">
-        <!-- SUA IMAGEM DO SOAPRISE AQUI -->
         <img src="imagens/soaprise.png" alt="Soaprise Game">
       </div>
       <div class="project-content">
@@ -334,7 +344,7 @@
           <span>C#</span>
           <span>Global Game Jam</span>
         </div>
-        <p>Jogo casual com mecânicas únicas e design envolvente.</p>
+        <p>Jogo casual desenvolvido para a Global Game Jam 2025 com mecânicas únicas.</p>
         <a href="https://globalgamejam.org/games/2025/placeholder-mochi-3" target="_blank" class="project-link">
           Ver Projeto <i class="fas fa-arrow-right"></i>
         </a>
@@ -368,17 +378,19 @@
   </footer>
 
   <script>
-    // Dados dos projetos
+    // Dados dos projetos ATUALIZADOS
     const projects = {
       quantum: {
         title: "Quantum Game",
-        desc: "Jogo de puzzles publicado na itch.io com mecânicas quânticas inovadoras. Desenvolvido com Unity e C#, focando em lógica e resolução de problemas.",
-        link: "https://joelfernandes.itch.io/the-quantum-game"
+        desc: "Jogo de puzzles publicado na itch.io com mecânicas quânticas inovadoras. Desenvolvido com Unity e C#, focando em lógica e resolução de problemas. O jogo apresenta 40+ níveis com desafios progressivos que ensinam conceitos básicos de física quântica de forma divertida.",
+        link: "https://joelfernandes.itch.io/the-quantum-game",
+        type: "itch"
       },
       soaprise: {
         title: "Soaprise",
-        desc: "Jogo mobile casual desenvolvido com Unity. Apresenta mecânicas únicas e design visual atrativo para uma experiência divertida e acessível.",
-        link: "#"
+        desc: "Jogo desenvolvido para a Global Game Jam 2025 com o tema 'Mochi'. Um jogo casual com mecânicas únicas onde os jogadores controlam personagens em um ambiente dinâmico. Desenvolvido em 48 horas durante o evento com foco em gameplay fluida e design visual atrativo.",
+        link: "https://globalgamejam.org/games/2025/placeholder-mochi-3",
+        type: "ggj"
       }
     };
 
@@ -399,21 +411,26 @@
         modalTitle.textContent = project.title;
         modalDesc.textContent = project.desc;
         visitBtn.href = project.link;
+        copyBtn.dataset.link = project.link;
         
-        // Mudar texto do botão para Soaprise
-        if (projectId === 'soaprise') {
-          copyBtn.style.display = 'none';
-          visitBtn.innerHTML = '<i class="fas fa-clock"></i> Em Breve';
-          visitBtn.style.background = '#6b7280';
-          visitBtn.onclick = (e) => {
-            e.preventDefault();
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-          };
-        } else {
+        // Configurar botões baseado no tipo de projeto
+        if (project.type === "ggj") {
+          // Soaprise - Global Game Jam
           copyBtn.style.display = 'flex';
-          copyBtn.dataset.link = project.link;
-          visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Visitar Site';
+          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
+          copyBtn.style.background = '';
+          
+          visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Global Game Jam';
+          visitBtn.className = 'modal-btn ggj';
+          visitBtn.style.background = '';
+        } else {
+          // Quantum Game - itch.io
+          copyBtn.style.display = 'flex';
+          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
+          copyBtn.style.background = '';
+          
+          visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> itch.io';
+          visitBtn.className = 'modal-btn visit';
           visitBtn.style.background = '';
         }
         
@@ -435,10 +452,13 @@
       }
     };
 
-    // Copiar link (apenas para Quantum Game)
+    // Copiar link (funciona para ambos os projetos)
     copyBtn.onclick = () => {
-      navigator.clipboard.writeText(copyBtn.dataset.link)
+      const linkToCopy = copyBtn.dataset.link;
+      
+      navigator.clipboard.writeText(linkToCopy)
         .then(() => {
+          // Feedback visual
           const originalText = copyBtn.innerHTML;
           copyBtn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
           copyBtn.style.background = '#10b981';
@@ -450,6 +470,24 @@
         })
         .catch(err => {
           console.error('Erro ao copiar:', err);
+          
+          // Fallback para navegadores antigos
+          const tempInput = document.createElement('input');
+          tempInput.value = linkToCopy;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          
+          // Feedback mesmo com fallback
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+          copyBtn.style.background = '#10b981';
+          
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+            copyBtn.style.background = '';
+          }, 2000);
         });
     };
 
@@ -459,6 +497,21 @@
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
       }
+    });
+
+    // Feedback visual ao clicar nos links das cards
+    document.querySelectorAll('.project-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.stopPropagation(); // Não abrir o modal quando clicar no link
+        
+        // Feedback visual
+        const originalColor = link.style.color;
+        link.style.color = '#10b981';
+        
+        setTimeout(() => {
+          link.style.color = originalColor;
+        }, 300);
+      });
     });
   </script>
 </body>
