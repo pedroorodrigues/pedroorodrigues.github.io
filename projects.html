@@ -262,7 +262,7 @@
       transform: translateY(-2px);
     }
 
-    /* BOTÃO PARA GLOBAL GAME JAM (estilo diferente) */
+    /* BOTÃO PARA GLOBAL GAME JAM */
     .modal-btn.ggj {
       background: var(--secondary);
       color: white;
@@ -273,18 +273,7 @@
       transform: translateY(-2px);
     }
 
-    /* BOTÃO PARA STEAM */
-    .modal-btn.steam {
-      background: #1b2838;
-      color: white;
-    }
-
-    .modal-btn.steam:hover {
-      background: #2a3f5e;
-      transform: translateY(-2px);
-    }
-
-    /* BOTÃO PARA ITCH.IO (padrão) */
+    /* BOTÃO ITCH.IO (padrão) */
     .modal-btn.itch {
       background: var(--primary);
       color: white;
@@ -293,6 +282,19 @@
     .modal-btn.itch:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
+    }
+
+    /* BOTÃO DESABILITADO PARA BREVEMENTE */
+    .modal-btn.disabled {
+      background: #4a5568;
+      color: #a0aec0;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .modal-btn.disabled:hover {
+      transform: none;
+      background: #4a5568;
     }
 
     /* FOOTER */
@@ -383,7 +385,7 @@
         <div class="project-tags">
           <span>Unity</span>
           <span>C#</span>
-          <span>Steam</span>
+          <span>itch.io</span>
           <span>RPG</span>
         </div>
         <p>Jogo de Terror desenvolvido para a Game Jam.</p>
@@ -420,10 +422,10 @@
       
       <div class="modal-buttons">
         <button id="copyBtn" class="modal-btn copy">
-          <i class="fas fa-copy"></i> Brevemente
+          <i class="fas fa-copy"></i> Copiar Link
         </button>
         <a id="visitBtn" target="_blank" class="modal-btn visit">
-          <i class="fas fa-external-link-alt"></i> Brevemente
+          <i class="fas fa-external-link-alt"></i> Ver Projeto
         </a>
       </div>
     </div>
@@ -453,15 +455,15 @@
       },
       sastan: {
         title: "Satan's Miracle",
-        desc: "Jogo de Terror psicológico desenvolvido para a Game Jam.",
+        desc: "Jogo de Terror psicológico desenvolvido para a Game Jam, com mecânicas de puzzle e narrativa envolvente.",
         link: "https://vacponto.itch.io/satans-miracle",
-        type: "steam"
+        type: "itch"  // Alterado para itch.io
       },
       brokenfamily: {
         title: "A Broken Family",
-        desc: "Jogo de Terror psicológico desenvolvido para a Game Jam, com mecânicas de puzzle e narrativa envolvente.",
-        link: "Brevemente",
-        type: "Brevemente"
+        desc: "Jogo de Terror psicológico desenvolvido para a Game Jam, com mecânicas de puzzle e narrativa envolvente. Em breve mais informações!",
+        link: null,  // Sem link disponível
+        type: "coming-soon"  // Novo tipo para "Brevemente"
       }
     };
 
@@ -473,45 +475,65 @@
     const visitBtn = document.getElementById('visitBtn');
     const closeBtn = document.querySelector('.close');
 
+    // Função para configurar o modal como "Brevemente"
+    function setupComingSoonModal(project) {
+      modalTitle.textContent = project.title;
+      modalDesc.textContent = project.desc;
+      
+      // Configurar botão Copiar como desabilitado
+      copyBtn.classList.add('disabled');
+      copyBtn.style.cursor = 'not-allowed';
+      copyBtn.innerHTML = '<i class="fas fa-clock"></i> Brevemente';
+      copyBtn.removeAttribute('data-link');
+      
+      // Configurar botão Visitar como desabilitado
+      visitBtn.classList.add('disabled');
+      visitBtn.innerHTML = '<i class="fas fa-clock"></i> Brevemente';
+      visitBtn.removeAttribute('href');
+      visitBtn.style.pointerEvents = 'none';
+    }
+
+    // Função para configurar o modal normal
+    function setupNormalModal(project) {
+      modalTitle.textContent = project.title;
+      modalDesc.textContent = project.desc;
+      visitBtn.href = project.link;
+      copyBtn.dataset.link = project.link;
+      
+      // Remover classe disabled se existir
+      copyBtn.classList.remove('disabled');
+      visitBtn.classList.remove('disabled');
+      copyBtn.style.cursor = 'pointer';
+      visitBtn.style.pointerEvents = 'auto';
+      
+      // Configurar botões baseado no tipo de projeto
+      if (project.type === "ggj") {
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
+        copyBtn.style.background = '';
+        
+        visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Global Game Jam';
+        visitBtn.className = 'modal-btn ggj';
+        visitBtn.style.background = '';
+      } else if (project.type === "itch") {
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
+        copyBtn.style.background = '';
+        
+        visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> itch.io';
+        visitBtn.className = 'modal-btn itch';
+        visitBtn.style.background = '';
+      }
+    }
+
     // Abrir modal
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', () => {
         const projectId = card.dataset.modal;
         const project = projects[projectId];
         
-        modalTitle.textContent = project.title;
-        modalDesc.textContent = project.desc;
-        visitBtn.href = project.link;
-        copyBtn.dataset.link = project.link;
-        
-        // Configurar botões baseado no tipo de projeto
-        if (project.type === "ggj") {
-          // Soaprise - Global Game Jam
-          copyBtn.style.display = 'flex';
-          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
-          copyBtn.style.background = '';
-          
-          visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Global Game Jam';
-          visitBtn.className = 'modal-btn ggj';
-          visitBtn.style.background = '';
-        } else if (project.type === "steam") {
-          // Satan's Miracle - Steam
-          copyBtn.style.display = 'flex';
-          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
-          copyBtn.style.background = '';
-          
-          visitBtn.innerHTML = '<i class="fab fa-steam"></i> Ver na Steam';
-          visitBtn.className = 'modal-btn steam';
-          visitBtn.style.background = '';
+        if (project.type === "coming-soon") {
+          setupComingSoonModal(project);
         } else {
-          // Quantum Game & A Broken Family - itch.io
-          copyBtn.style.display = 'flex';
-          copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
-          copyBtn.style.background = '';
-          
-          visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> itch.io';
-          visitBtn.className = 'modal-btn itch';
-          visitBtn.style.background = '';
+          setupNormalModal(project);
         }
         
         modal.style.display = "flex";
@@ -532,9 +554,14 @@
       }
     };
 
-    // Copiar link (funciona para todos os projetos)
+    // Copiar link (apenas para projetos que têm link)
     copyBtn.onclick = () => {
       const linkToCopy = copyBtn.dataset.link;
+      
+      // Se não tiver link ou estiver desabilitado, não faz nada
+      if (!linkToCopy || copyBtn.classList.contains('disabled')) {
+        return;
+      }
       
       navigator.clipboard.writeText(linkToCopy)
         .then(() => {
