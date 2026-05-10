@@ -284,6 +284,17 @@
       transform: translateY(-2px);
     }
 
+    /* BOTÃO PARA ITCH.IO (padrão) */
+    .modal-btn.itch {
+      background: var(--primary);
+      color: white;
+    }
+
+    .modal-btn.itch:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
     /* FOOTER */
     footer {
       background: #020617;
@@ -362,7 +373,7 @@
       </div>
     </div>
 
-    <!-- SASTAN'S MIRACLE - NOVO PROJETO -->
+    <!-- SASTAN'S MIRACLE -->
     <div class="project-card" data-modal="sastan">
       <div class="project-image">
         <img src="imagens/SM.png" alt="Sastan's Miracle">
@@ -377,6 +388,26 @@
         </div>
         <p>Jogo de Terror desenvolvido para a Game Jam.</p>
         <a href="https://store.steampowered.com/app/placeholder" target="_blank" class="project-link">
+          Ver Projeto <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- A BROKEN FAMILY - NOVO PROJETO -->
+    <div class="project-card" data-modal="brokenfamily">
+      <div class="project-image">
+        <img src="imagens/ABF.png" alt="A Broken Family">
+      </div>
+      <div class="project-content">
+        <h3>A Broken Family</h3>
+        <div class="project-tags">
+          <span>Unity</span>
+          <span>C#</span>
+          <span>Itch.io</span>
+          <span>Narrativo</span>
+        </div>
+        <p>Jogo narrativo emocionante que explora as复杂idades das relações familiares e superação.</p>
+        <a href="https://itch.io/game/placeholder" target="_blank" class="project-link">
           Ver Projeto <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -413,21 +444,27 @@
     const projects = {
       quantum: {
         title: "Quantum Game",
-        desc: "Jogo de puzzles publicado na itch.io com mecânicas quânticas inovadoras. Desenvolvido com Unity e C#, focando em lógica e resolução de problemas.",
+        desc: "Jogo de puzzles publicado na itch.io com mecânicas quânticas inovadoras. Desenvolvido com Unity e C#, focando em lógica e resolução de problemas. O jogo apresenta 40+ níveis com desafios progressivos que ensinam conceitos básicos de física quântica de forma divertida.",
         link: "https://joelfernandes.itch.io/the-quantum-game",
         type: "itch"
       },
       soaprise: {
         title: "Soaprise",
-        desc: "Jogo desenvolvido para a Global Game Jam 2025 com o tema 'Buble'. Um jogo casual com mecânicas únicas onde os jogadores controlam personagens em um ambiente dinâmico. Desenvolvido em 48 horas durante o evento com foco em gameplay fluida e design visual atrativo.",
+        desc: "Jogo desenvolvido para a Global Game Jam 2025 com o tema 'Bubble'. Um jogo casual com mecânicas únicas onde os jogadores controlam personagens em um ambiente dinâmico. Desenvolvido em 48 horas durante o evento com foco em gameplay fluida e design visual atrativo.",
         link: "https://globalgamejam.org/games/2025/placeholder-mochi-3",
         type: "ggj"
       },
       sastan: {
-        title: "Sastan's Miracle",
-        desc: "Jogo de Terror desenvolvido para a Game Jam.",
+        title: "Satan's Miracle",
+        desc: "Jogo de Terror psicológico desenvolvido para a Game Jam, onde o jogador explora ambientes sombrios e descobre segredos obscuros. Com mecânicas de puzzle e narrativa envolvente, o jogo oferece uma experiência imersiva de aproximadamente 2 horas de gameplay.",
         link: "https://store.steampowered.com/app/placeholder",
         type: "steam"
+      },
+      brokenfamily: {
+        title: "A Broken Family",
+        desc: "Um jogo narrativo emocionante que explora as complexidades das relações familiares, conflitos e o caminho para a reconciliação. Os jogadores assumem o papel de um membro da família tentando restaurar os laços quebrados através de diálogos impactantes e escolhas significativas que afetam o desfecho da história. Desenvolvido com Unity e C#, o jogo apresenta uma trilha sonora emotiva e arte em pixel art.",
+        link: "https://itch.io/game/placeholder",
+        type: "itch"
       }
     };
 
@@ -461,7 +498,7 @@
           visitBtn.className = 'modal-btn ggj';
           visitBtn.style.background = '';
         } else if (project.type === "steam") {
-          // Sastan's Miracle - Steam
+          // Satan's Miracle - Steam
           copyBtn.style.display = 'flex';
           copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
           copyBtn.style.background = '';
@@ -470,13 +507,13 @@
           visitBtn.className = 'modal-btn steam';
           visitBtn.style.background = '';
         } else {
-          // Quantum Game - itch.io
+          // Quantum Game & A Broken Family - itch.io
           copyBtn.style.display = 'flex';
           copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copiar Link';
           copyBtn.style.background = '';
           
           visitBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> itch.io';
-          visitBtn.className = 'modal-btn visit';
+          visitBtn.className = 'modal-btn itch';
           visitBtn.style.background = '';
         }
         
